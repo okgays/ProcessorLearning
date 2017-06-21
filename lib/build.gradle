@@ -1,0 +1,15 @@
+apply plugin: 'java'
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.google.auto.service:auto-service:1.0-rc3' //用来向jvm注册自定义processor
+    compile 'com.squareup:javapoet:1.7.0' //用来生成优雅的java代码
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
+
+//解决 “编码GBK的不可映射字符”的错误提示
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
